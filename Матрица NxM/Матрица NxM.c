@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <stdlib.h>
+
 //Структура содержит указатель на двумерный массив, значение числа строк(n) и столбцов(m)
 typedef struct Matrix_NxM {
 	float** data;
@@ -15,10 +17,10 @@ matrix MemMatrix(int n, int m) {
 	
 	resultmat.n = n;
 	resultmat.m = m;
-	resultmat.data = (float**)malloc(sizeof(float*) * resultmat.n);
+	resultmat.data = (float**) malloc(sizeof(float*) * n);
 
 	for (int i = 0; i < n; i++) {
-		resultmat.data[i] = (float*)malloc(sizeof(float) * resultmat.m);
+		resultmat.data[i] = (float*) malloc(sizeof(float) * m);
 	}
 	return resultmat;
 }
@@ -192,7 +194,7 @@ int main() {
 	char ch;
 	do {
 		//Определение типа операции
-		/* FILE *fp;
+		 FILE *fp;
 		char iotype;
 		printf("Input type of insertion(s - stdio/f - file): ");
 		scanf_s("%c", &iotype);
@@ -212,7 +214,7 @@ int main() {
 
 		if (fp == NULL) {
 			printf("File opening error!\n");
-		} */
+		}
 	
 		char type;
 		printf("Input type of operation (S - Summ/M - Multiplication/D - Determinant/I - Invertible): ");
